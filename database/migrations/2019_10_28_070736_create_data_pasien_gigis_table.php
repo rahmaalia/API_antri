@@ -14,7 +14,8 @@ class CreateDataPasienGigisTable extends Migration
     public function up()
     {
         Schema::create('data_pasien_gigis', function (Blueprint $table) {
-            $table->increments('id_pasien');
+            $table->increments('id');
+            $table->integer('users_id')->unsigned();
             $table->integer('polis_id')->unsigned();
             $table->string('no_Identitas');
             $table->string('nama');
@@ -25,6 +26,7 @@ class CreateDataPasienGigisTable extends Migration
             $table->timestamps();
 
             $table->foreign('polis_id')->references('id')->on('polis')->onDelete('cascade');
+            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

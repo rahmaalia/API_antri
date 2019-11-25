@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDataPasienUmumsTable extends Migration
+class CreateAntriGigisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,16 @@ class CreateDataPasienUmumsTable extends Migration
      */
     public function up()
     {
-        Schema::create('data_pasien_umums', function (Blueprint $table) {
+        Schema::create('antri_gigis', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id')->unsigned();
+            $table->integer('data_pasien_gigis_id')->unsigned();
             $table->integer('polis_id')->unsigned();
-            $table->string('no_Identitas');
-            $table->string('nama');
-            $table->string('kota_lahir');
-            $table->string('tgl_lahir');
-            $table->text('alamat');
-            $table->string('jenis_kelamin');
+            $table->string('no_antrian');
+            $table->string('status');
             $table->timestamps();
 
+            $table->foreign('data_pasien_gigis_id')->references('id')->on('data_pasien_gigis')->onDelete('cascade');
             $table->foreign('polis_id')->references('id')->on('polis')->onDelete('cascade');
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -37,6 +33,6 @@ class CreateDataPasienUmumsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_pasien_umums');
+        Schema::dropIfExists('antri_gigis');
     }
 }

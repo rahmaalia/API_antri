@@ -10,7 +10,13 @@ use Validator;
 
 class UserController extends Controller
 {
-    
+    public function getuser(Dokter $dokter)
+    {
+        $userr = User::all();
+        return response() -> json([
+            'pesan' => 'berhasil',
+            'bio' => $userr], 200);
+    }
 
     public $successStatus = 200; 
     public function login()
@@ -26,7 +32,7 @@ class UserController extends Controller
             'data'=>$user,
             'token'=>$success],
              $this -> successStatus);
-           
+
         }
         else{
             return response()->json([
@@ -75,6 +81,23 @@ class UserController extends Controller
         $user = Auth::user(); 
         return response()->json(['success' => $user], $this-> successStatus); 
     } 
+
+    public function update(request $request, $id){
+        $nama = $request->nama;
+        $no_telp = $request->no_telp;
+
+        $edit = User::find($id);
+        $edit->nama = $nama;
+        $edit->no_telp = $no_telp;
+        $edit->save();
+        return response() -> json([
+            'status' =>true,
+            'token'=>$edit]);
+
+
+
+
+    }
 
     
 }

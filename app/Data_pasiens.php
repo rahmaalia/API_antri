@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Data_pasiens extends Model
 {
     protected $fillable = [
-        'id', 'polis_id','no_identitas','nama','kota_lahir','tgl_lahir','alamat','jenis_kelamin'
+        'id','users_id', 'polis_id','no_identitas','nama','kota_lahir','tgl_lahir','alamat','jenis_kelamin'
     ];
 
     public function poli(){
@@ -15,6 +15,10 @@ class Data_pasiens extends Model
     }
 
     public function antri(){
-        return $this->hasOne(Antri::class);
+        return $this->hasOne(Antris::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

@@ -17,8 +17,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nama', 'username','no_telp', 'password',
+        'id','nama', 'username','no_telp', 'password',
     ];
+
+    public function dataPasienAnak(){
+        return $this->hasMany(Data_pasiens::class);
+    }
+    public function dataPasienGigi(){
+        return $this->hasMany(Data_pasien_gigis::class);
+    }
+    public function dataPasienUmum(){
+        return $this->hasMany(Data_pasien_umums::class);
+    }
+    public function dataPasienMata(){
+        return $this->hasMany(Data_pasien_matas::class);
+    }
 
     /**
      * The attributes that should be hidden for arrays.

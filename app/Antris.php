@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Antris extends Model
 {
     protected $fillable = [
-    'id','data_pasiens_id','polis_id','no_antrian'
+    'id','data_pasiens_id','polis_id','no_antrian','status'
 ];
 
     public function datapasien(){

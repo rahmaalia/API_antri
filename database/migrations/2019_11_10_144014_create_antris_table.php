@@ -18,6 +18,7 @@ class CreateAntrisTable extends Migration
             $table->integer('data_pasiens_id')->unsigned();
             $table->integer('polis_id')->unsigned();
             $table->string('no_antrian');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('data_pasiens_id')->references('id')->on('data_pasiens')->onDelete('cascade');

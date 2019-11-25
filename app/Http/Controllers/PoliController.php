@@ -37,11 +37,12 @@ class PoliController extends Controller
             foreach($polianak as $pa){
             }
             foreach($poligigi as $pg){
-            };
+            }
             foreach($poliumum as $pu){
-            };
+            }
             foreach($polimata as $pm){
-            };
+            }
+
         return response() -> json([
             'status' => true,
             'polianak'=>$pa,

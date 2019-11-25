@@ -25,7 +25,6 @@ class Polis extends Model
         return $this->hasOne(Dokters::class);
     }
 
-    public function dataAntri(){
-        return $this->hasMany(Antris::class);
-    }
+    
+
 }
